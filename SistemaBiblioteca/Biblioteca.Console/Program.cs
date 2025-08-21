@@ -2,9 +2,6 @@
 // ###                      MAIN                        ###
 // ########################################################
 
-
-
-
 int op;
 
 while (true)
@@ -17,33 +14,30 @@ while (true)
     Console.WriteLine("4 - Relatorios de Livros");
     Console.WriteLine("0 - Sair");
     Console.Write("Opção: ");
-    op = int.Parse(Console.ReadLine());
+
+    try
+    {
+        op = int.Parse(Console.ReadLine());
+    }
+    catch (Exception ex)
+    {
+        op = 0;
+    }
 
     if (op == 0) break;
 
     switch (op)
     {
         case 1: CadastrarLivro(); break;
-        // case 2: VerLivro(); break;
-        // case 3: ExcluirLivro(); break;
-        // case 4: RelatoriosLivros(); break;
+            // case 2: VerLivro(); break;
+            // case 3: ExcluirLivro(); break;
+            // case 4: RelatoriosLivros(); break;
     }
     Console.WriteLine("\nPressione Enter para continuar...");
     Console.ReadKey();
     Console.Clear();
-       
+
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // ########################################################
 // ###                 FUNCTIONS                        ###
