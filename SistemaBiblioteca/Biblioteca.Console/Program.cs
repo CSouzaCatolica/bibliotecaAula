@@ -1,13 +1,7 @@
-﻿main();
-
-
-void main()
-{
-    Livro livro = new Livro("Teste", "asdw");
-    Console.WriteLine(livro);
-}
-
-
+﻿
+Livro livro = new Livro("Teste", "asdw");
+Console.WriteLine(livro);
+// #########################################################################################
 public class Livro
 {
     protected string nome { get; set; }
@@ -32,11 +26,11 @@ public class Livro
         this.capa = "";
     }
 
-    
+
     public override string ToString()
     {
-        return "{'nome':'" + this.nome + "','capa':'" + this.capa+"}";
-    } 
+        return "{'nome':'" + this.nome + "','capa':'" + this.capa + "}";
+    }
 
 
 }
