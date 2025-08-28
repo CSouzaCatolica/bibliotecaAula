@@ -1,21 +1,27 @@
 ﻿
-Livro livro = new Livro("Teste", "asdw");
+Livro livro = new Livro("Teste");
 Console.WriteLine(livro);
+livro.nome = "sim";
+Console.WriteLine(livro);
+
 // #########################################################################################
 public class Livro
 {
-    protected string nome { get; set; }
+    public string nome { get; set; }
     protected string capa { get; set; }
+    protected string autor { get; set; }
+
 
     // construtor full
-    public Livro(string nome, string capa)
+    public Livro(string nome, string capa, string autor)
     {
         this.nome = nome;
         this.capa = capa;
+        this.autor = autor;
     }
 
     // construtor separado
-    public Livro() : this("Sem nome", "")
+    public Livro() : this("", "", "")
     {
     }
 
@@ -23,7 +29,6 @@ public class Livro
     public Livro(string nome)
     {
         this.nome = nome;
-        this.capa = "";
     }
 
 
