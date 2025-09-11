@@ -1,0 +1,65 @@
+﻿main();
+
+void main()
+{
+
+    Console.Clear();
+    Console.WriteLine("---=== Sistema Biblioteca ===---");
+
+    List<Livro> livros = new();
+
+    livros.Add(new Livro(43, "O Hobbit", "JRR Tolkien", 300, 80.90));    
+    livros.Add(new Livro(67, "O senhor dos aneis", "JRR Tolkien", 1270, 120.80));
+    livros.Add(new Livro(23, "O senor dels anais", "pacu", 34, 646));
+    livros.Add(new Livro(611, "Harry Potter", "JK Rolling", 230, 65.70));
+
+    // Imprime os livros
+    foreach (Livro livroTal in livros)
+    {
+        livroTal.ImprimirLivro();
+    }
+}
+
+
+public class Livro
+{
+
+    private int codigo;
+    private string titulo;
+    private string autor;
+    private int paginas;
+    private double preco;
+
+    //  
+    // construtores
+    //
+    public Livro()
+    {
+        this.codigo = 0;
+        this.titulo = "";
+        this.autor = "";
+        this.paginas = 0;
+        this.preco = 0;
+    }
+
+    public Livro(int codigo, string titulo, string autor, int paginas, double preco)
+    {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.paginas = paginas;
+        this.preco = preco;
+    }
+
+    //
+    // metodos
+    //
+    public void ImprimirLivro()
+    {
+        Console.WriteLine("---=== Livro ===---");
+        Console.WriteLine($"Codigo: {this.codigo}, Titulo: {this.titulo}, Autor: {this.autor}, Paginas: {this.paginas}, Preco: {this.preco}");
+        Console.WriteLine("");
+    }
+
+
+}

@@ -1,41 +1,23 @@
-﻿
-Livro livro = new Livro("Teste");
-Console.WriteLine(livro);
-livro.nome = "sim";
-Console.WriteLine(livro);
+﻿String opcao = "";
+Tela tela = new Tela(
+    50,
+    10,
+    ConsoleColor.Yellow,
+    ConsoleColor.Black
+);
 
-// #########################################################################################
-public class Livro
+List<string> menu = new List<string>();
+menu.Add("1 - Emprestimos");
+menu.Add("2 - Livros");
+menu.Add("3 - Alunos");
+menu.Add("4 - Usuarios");
+menu.Add("0 - Sair");
+
+
+while (true)
 {
-    public string nome { get; set; }
-    protected string capa { get; set; }
-    protected string autor { get; set; }
-
-
-    // construtor full
-    public Livro(string nome, string capa, string autor)
-    {
-        this.nome = nome;
-        this.capa = capa;
-        this.autor = autor;
-    }
-
-    // construtor separado
-    public Livro() : this("", "", "")
-    {
-    }
-
-
-    public Livro(string nome)
-    {
-        this.nome = nome;
-    }
-
-
-    public override string ToString()
-    {
-        return "{'nome':'" + this.nome + "','capa':'" + this.capa + "}";
-    }
-
+    tela.PrepararTela();
+    if (opcao == "0") break;
+    Console.ReadKey();
 
 }
