@@ -1,0 +1,11 @@
+List<Livro> livros = new List<Livro>();
+
+livros.Add(new Livro(67, "O senhor dos aneis", "JRR TOlkien", 1270, 120.80));
+livros.Add(new Livro(11, "Harry Potter", "JK Rolling", 230, 65.70));
+livros.Add(new Livro(23, "O pequeno principe", "Antoine de Saint-Exupery", 96, 15.90));
+
+foreach (var livro in livros)
+{
+    livro.imprimirLivro();
+}
+Console.ReadKey();
