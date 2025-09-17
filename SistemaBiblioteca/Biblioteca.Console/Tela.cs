@@ -1,57 +1,55 @@
 public class Tela
 {
-    //
-    // Propriedades
-    //
-    private int largura;
-    private int altura;
-    private ConsoleColor corTexto;
-    private ConsoleColor corFundo;
+    ///
+    /// Propriedades
+    ///
+    private int largura, altura;
+    private ConsoleColor corTexto, corFundo;
 
-    //
-    // Construtores
-    //
-    public Tela(int largura, int altura, ConsoleColor corTexto, ConsoleColor corFundo)
+    ///
+    /// Métodos
+    ///
+    public Tela(int lar, int alt, ConsoleColor txt, ConsoleColor fun)
     {
-        this.largura = largura;
-        this.altura = altura;
-        this.corTexto = corTexto;
-        this.corFundo = corFundo;
+        this.largura = lar;
+        this.altura = alt;
+        this.corTexto = txt;
+        this.corFundo = fun;
     }
 
-    //
-    // Métodos
-    //
+
     public void PrepararTela()
     {
         Console.BackgroundColor = this.corFundo;
         Console.ForegroundColor = this.corTexto;
+        Console.Clear();
         this.MontarMoldura(0, 0, this.largura, this.altura);
     }
 
+
     public void MontarMoldura(int colIni, int linIni, int colFin, int linFin)
     {
-        for (int coluna = 0; coluna < colFin; coluna++)
+        for (int coluna = colIni; coluna <= colFin; coluna++)
         {
-            // horizontal sup
+            // desenha a linha horizontal superior
             Console.SetCursorPosition(coluna, linIni);
-
             Console.Write("═");
-            // horizontal inf
+
+            // desenha a linha horizontal inferior
             Console.SetCursorPosition(coluna, linFin);
             Console.Write("═");
         }
 
         for (int linha = linIni; linha <= linFin; linha++)
         {
-            // vertical esq
-            Console.Write("║");
+            // desenha a linha vertical esquerda
             Console.SetCursorPosition(colIni, linha);
-
-            // vertical dir
+            Console.Write("║");
+            // desenha a linha vertical direita
             Console.SetCursorPosition(colFin, linha);
             Console.Write("║");
         }
     }
+
 
 }

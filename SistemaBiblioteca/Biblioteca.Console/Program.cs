@@ -1,8 +1,8 @@
 ﻿String opcao = "";
 Tela tela = new Tela(
-    50,
-    10,
-    ConsoleColor.Yellow,
+    40,
+    15,
+    ConsoleColor.DarkRed,
     ConsoleColor.Black
 );
 
@@ -17,6 +17,15 @@ menu.Add("0 - Sair");
 while (true)
 {
     tela.PrepararTela();
+
+    int linha = 5;
+    foreach (string op in menu)
+    {
+        Console.SetCursorPosition(5, linha);
+        Console.Write(op);
+        linha++;
+    }
+
     if (opcao == "0") break;
     Console.ReadKey();
 
