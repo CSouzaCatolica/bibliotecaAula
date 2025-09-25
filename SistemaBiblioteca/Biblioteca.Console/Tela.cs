@@ -93,17 +93,34 @@ public class Tela
     }
 
 
-    public void MontarTela(int col, int lin, List<string> dados)
+    public void MontarTela(int col, int lin, List<string> dados, string titulo = "")
     {
         this.MontarMoldura(col, lin, col + this.largura, lin + this.altura);
         col++;
-        lin += 2;
+        lin++;
+        Console.SetCursorPosition(col, lin);
+        Console.Write(titulo);
+        lin++;
         foreach (string pergunta in dados)
         {
             Console.SetCursorPosition(col, lin);
             Console.Write(pergunta);
             lin++;
         }
+    }
+
+    public void MostrarMensagem(string mensagem, int linha, int coluna)
+    {
+        Console.SetCursorPosition(coluna, linha);
+        Console.Write(mensagem);
+    }
+
+    public string Perguntar(int coluna, int linha, string perg, bool toUpper = false)
+    {
+        this.MostrarMensagem(perg, linha, coluna);
+        string resposta = Console.ReadLine();
+        if (toUpper) return resposta.ToUpper();
+        return resposta;
     }
 
 }
