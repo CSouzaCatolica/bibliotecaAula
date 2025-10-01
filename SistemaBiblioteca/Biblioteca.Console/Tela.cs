@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml;
+
 public class Tela
 {
     ///
@@ -93,7 +96,7 @@ public class Tela
     }
 
 
-    public void MontarTela(int col, int lin, List<string> dados, string titulo = "")
+    public void MontarTela(int col, int lin, List<string> dados, string titulo)
     {
         this.MontarMoldura(col, lin, col + this.largura, lin + this.altura);
         col++;
@@ -109,18 +112,18 @@ public class Tela
         }
     }
 
-    public void MostrarMensagem(string mensagem, int linha, int coluna)
+
+    public void MostrarMensagem(int col, int lin, string msg)
     {
-        Console.SetCursorPosition(coluna, linha);
-        Console.Write(mensagem);
+        Console.SetCursorPosition(col, lin);
+        Console.Write(msg);
     }
 
-    public string Perguntar(int coluna, int linha, string perg, bool toUpper = false)
+
+    public string Perguntar(int coluna, int linha, string perg)
     {
-        this.MostrarMensagem(perg, linha, coluna);
+        this.MostrarMensagem(coluna, linha, perg);
         string resposta = Console.ReadLine();
-        if (toUpper) return resposta.ToUpper();
         return resposta;
     }
-
 }

@@ -1,4 +1,4 @@
-using System.Text;
+using System.Runtime.CompilerServices;
 
 public class LivroCRUD
 {
@@ -39,47 +39,30 @@ public class LivroCRUD
 
     public void ExecutarCRUD()
     {
-        bool achou = false;
         string resp;
         Tela tela = new Tela(this.largura, this.altura);
         tela.MontarTela(this.coluna, this.linha, this.dados, "Cadastro de Livros");
 
         this.EntrarDados(1);
-
-        achou = this.ProcurarCodigo();
-
+        bool achou = this.ProcurarCodigo();
         if (!achou)
         {
-            tela.MostrarMensagem("Livro não cadastrado", 13, 20);
-
-            resp = tela.Perguntar(coluna: 14, linha: 20, perg: "Quer cadastrar? [S:Sim, N:Não]", toUpper: true);
-            if (resp == "S")
+            tela.MostrarMensagem(1, 23, "Código não encontrado.");
+            resp = tela.Perguntar(1, 24, "Deseja cadastrar (S/N) : ");
+            if (resp.ToLower() == "s")
             {
                 this.EntrarDados(2);
+                resp = tela.Perguntar(1, 24, "Confirma o cadastro (S/N) : ");
+                if (resp.ToLower() == "s")
+                {
+                    this.livros.Add(new Livro(this.livro.codigo, this.livro.titulo, this.livro.autor, this.livro.paginas, this.livro.paginas));
+                }
             }
-
         }
-    }
-
-
-    public bool ProcurarCodigo(){
-        for (int i = 0; i < this.livros.Count; i++)
+        else //if (achou)
         {
-            if (this.livros[i].codigo == this.livro.codigo)
-            {
-                this.indice = i;
-                Console.SetCursorPosition(this.coluna + this.dados[0].Length + 1, this.linha + 3);
-                Console.Write(this.livros[i].titulo);
-                Console.SetCursorPosition(this.coluna + this.dados[0].Length + 1, this.linha + 4);
-                Console.Write(this.livros[i].autor);
-                Console.SetCursorPosition(this.coluna + this.dados[0].Length + 1, this.linha + 5);
-                Console.Write(this.livros[i].paginas);
-                Console.SetCursorPosition(this.coluna + this.dados[0].Length + 1, this.linha + 6);
-                Console.Write(this.livros[i].preco);
-                return true;
-            }
+            this.MostrarDados();
         }
-        return false;
     }
 
 
@@ -102,12 +85,39 @@ public class LivroCRUD
             this.livro.paginas = int.Parse(Console.ReadLine());
             Console.SetCursorPosition(coluna, linha + 4);
             this.livro.preco = double.Parse(Console.ReadLine());
-
-            this.livros.Add(this.livro);
-
-
-
         }
+    }
+
+    public bool ProcurarCodigo()
+    {
+        bool encontrei = false;
+
+        for (int i = 0; i < this.livros.Count; i++)
+        {
+            if (this.livro.codigo == this.livros[i].codigo)
+            {
+                encontrei = true;
+                this.indice = i;
+                break;
+            }
+        }
+        return encontrei;
+    }
+
+    public void MostrarDados()
+    {
+        int coluna = this.coluna + this.dados[0].Length + 1;
+        int linha = this.linha + 3;
+
+        Console.SetCursorPosition(coluna, linha);
+        Console.Write(this.livros[this.indice].titulo);
+        Console.SetCursorPosition(coluna, linha + 1);
+        Console.Write(this.livros[this.indice].autor);
+        Console.SetCursorPosition(coluna, linha + 2);
+        Console.Write(this.livros[this.indice].paginas);
+        Console.SetCursorPosition(coluna, linha + 3);
+        Console.Write(this.livros[this.indice].preco);
+        
     }
 
 }
